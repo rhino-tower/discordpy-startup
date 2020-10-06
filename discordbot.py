@@ -5,7 +5,7 @@ import datetime
 import locale
 
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
-CHANNEL_ID = os.environ['DISCORD_CHANNEL_ID'
+CHANNEL_ID = os.environ['DISCORD_CHANNEL_ID']
 
 client = discord.Client()
 
