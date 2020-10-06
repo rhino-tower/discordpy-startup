@@ -16,7 +16,7 @@ async def on_message(message):
     # メッセージ送信者がBotだった場合は無視する
     if message.author.bot:
         return
-    if message.content == 'これからよろしく':
+    if message.content == 'hello':
         await message.channel.send('了解しました！！')
 
 # Botの起動とDiscordサーバーへの接続
