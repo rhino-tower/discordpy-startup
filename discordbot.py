@@ -21,7 +21,7 @@ async def loop():
     dt = datetime.datetime.now()
 
     if dt.strftime('%A') == 'Monday':
-        channel = client.get_channel(CHANNEL_ID)
+        channel = client.get_channel(int(CHANNEL_ID))
         await channel.send('今日からソフトウェア技術とサイバー技術の課題が出ます！\nお忘れなく!')
 
 loop.start()
