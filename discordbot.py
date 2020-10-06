@@ -1,26 +1,29 @@
 import discord
+from discord.ext import tasks
+import datetime
+import locale
+import os
 
-# 自分のBotのアクセストークンに置き換えてください
-TOKEN = 'NzYyOTc2NzAzMzk5MDY3NjU5.X3w_bQ.Jck1azIy2eDKzi5sX4wRKOUZzD0'
+TOKEN = os.environ['DISCORD_BOT_TOKEN']
+CHANNEL_ID = os.environ['DISCORD_CHANNEL_ID']
 
-# 接続に必要なオブジェクトを生成
 client = discord.Client()
 
-# 起動時に動作する処理
-@client.event
-async def on_ready():
-    # 起動したらターミナルにログイン通知が表示される
-    print('ログインしました')
-
-# メッセージ受信時に動作する処理
 @client.event
 async def on_message(message):
-    # メッセージ送信者がBotだった場合は無視する
     if message.author.bot:
         return
-    # 「/neko」と発言したら「にゃーん」が返る処理
-    if message.content == 'hello':
-        await message.channel.send('にゃーん')
+    if message.content == 'これからよろしく！':
+        print("了解しました‼")
 
-# Botの起動とDiscordサーバーへの接続
+@tasks.loop(seconds = 86400)
+async def loop():
+    dt = datetime.datetime.now()
+
+    if dt.strftime('%A') == 'Monday':
+        channel = client.get_channel(CHANNEL_ID)
+        await channel.send('今日からソフトウェア技術の課題が出ます！お忘れなく!')
+
+loop.start()
 client.run(TOKEN)
+
