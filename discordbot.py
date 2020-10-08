@@ -21,7 +21,7 @@ async def on_message(message):
 async def loop():
     channel = client.get_channel(int(CHANNEL_ID))
     await channel.send('みんな何してるんだー⁇')
-
+"""
 @tasks.loop(seconds = 86400)
 async def loop():
     dt = datetime.datetime.now()
@@ -29,6 +29,6 @@ async def loop():
     if dt.strftime('%A') == 'Monday':
         channel = client.get_channel(int(CHANNEL_ID))
         await channel.send('今日からソフトウェア技術とサイバー技術の課題が出ます！\nお忘れなく!')
-
+"""
 loop.start()
 bot.run(TOKEN)
