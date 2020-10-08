@@ -22,6 +22,7 @@ async def on_message(message):
         return
     if message.content == 'これからよろしく！':
         await message.channel.send('了解しました!!')
+
 @tasks.loop(seconds = 86400)
 async def loop():
     dt = datetime.datetime.now()
