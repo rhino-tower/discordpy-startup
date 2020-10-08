@@ -9,7 +9,6 @@ TOKEN = os.environ['DISCORD_BOT_TOKEN']
 CHANNEL_ID = os.environ['DISCORD_CHANNEL_ID']
 bot = commands.Bot(command_prefix = '/')
 client = discord.Client()
-channel = client.get_channel(int(CHANNEL_ID))
 
 @client.event
 async def on_message(message):
@@ -20,6 +19,7 @@ async def on_message(message):
 
 @tasks.loop(seconds = 10)
 async def loop():
+    channel = client.get_channel(int(CHANNEL_ID))
     await channel.send('みんな何してるんだー⁇')
 
 @tasks.loop(seconds = 86400)
@@ -27,6 +27,7 @@ async def loop():
     dt = datetime.datetime.now()
 
     if dt.strftime('%A') == 'Monday':
+        channel = client.get_channel(int(CHANNEL_ID))
         await channel.send('今日からソフトウェア技術とサイバー技術の課題が出ます！\nお忘れなく!')
 
 loop.start()
