@@ -1,34 +1,21 @@
-import discord
 from discord.ext import commands
-from discord.ext import tasks
-import datetime
-import locale
 import os
+import traceback
 
 bot = commands.Bot(command_prefix='/')
-TOKEN = os.environ['DISCORD_BOT_TOKEN']
-CHANNEL_ID = os.environ['CHANNEL_ID']
+token = os.environ['DISCORD_BOT_TOKEN']
 
-client = discord.Client()
-channel = client.get_channel(CHANNEL_ID)
 
-@client.event
-async def on_message(message):
-    if message.author.bot:
-        return
-    if message.content == 'これからよろしく！':
-        await message.channel.send("了解しました‼")
+@bot.event
+async def on_command_error(ctx, error):
+    orig_error = getattr(error, "original", error)
+    error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
+    await ctx.send(error_msg)
 
-@tasks.loop(seconds = 10)
-async def loop():
-    await channel.send('うるさくてごめんなさい') 
 
-@tasks.loop(seconds = 86400)
-async def loop():
-    dt = datetime.datetime.now()
+@bot.command()
+async def ping(ctx):
+    await ctx.send('pong')
 
-    if dt.strftime('%A') == 'Monday':
-        await channel.send('今日からソフトウェア技術とサイバー技術の課題が出ます！\nお忘れなく!')
 
-loop.start()
-bot.run(TOKEN)
+bot.run(token)
