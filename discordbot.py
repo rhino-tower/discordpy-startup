@@ -3,6 +3,7 @@ from discord.ext import commands
 from discord.ext import tasks
 import datetime
 import locale
+import os
 
 bot = commands.Bot(command_prefix='/')
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
