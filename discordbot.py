@@ -11,6 +11,11 @@ bot = commands.Bot(command_prefix = '/')
 client = discord.Client()
 
 @client.event
+async def on_ready():
+    msg = "やあ！TEST Botです．よろしくね！"
+    await client.send_message(text_chat,msg)
+
+@client.event
 async def on_message(message):
     if message.author.bot:
         return
