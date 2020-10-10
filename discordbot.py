@@ -15,6 +15,6 @@ async def on_message(message):
     if message.author.bot:
         return
     if message.content == 'これからよろしく！':
-        client.send_message("了解しました‼")
+        message.channel.send("了解しました‼")
 
 bot.run(TOKEN)
