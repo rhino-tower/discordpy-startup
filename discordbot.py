@@ -9,6 +9,11 @@ TOKEN = os.environ['DISCORD_BOT_TOKEN']
 CHANNEL_ID = os.environ['DISCORD_CHANNEL_ID']
 client = discord.Client()
 
+@client.event
+async def on_ready():
+    channel = client.get_channel(int(CHANNEL_ID))
+    await channel.send("起動")
+   
 @tasks.loop(seconds = 10)
 async def loop():
     channel = client.get_channel(int(CHANNEL_ID))
