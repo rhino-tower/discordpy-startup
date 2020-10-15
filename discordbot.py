@@ -7,7 +7,6 @@ import locale
 
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
 #CHANNEL_ID = os.environ['DISCORD_CHANNEL_ID']
-bot = commands.Bot(command_prefix = '/')
 client = discord.Client()
 
 @client.event
@@ -17,4 +16,4 @@ async def on_message(message):
     if message.content == '/ping':
         await message.channel.send("pong")
 
-bot.run(TOKEN)
+client.run(TOKEN)
