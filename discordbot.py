@@ -15,11 +15,11 @@ async def on_ready():
     await channel.send("起動")
 
 @tasks.loop(seconds=10)
-async def loop():
+async def timeloop():
     channel = client.get_channel(int(CHANNEL_ID))
     await channel.send("ok")
 
-loop.start()
+timeloop.start()
 
 """
 @tasks.loop(seconds = 86400)
