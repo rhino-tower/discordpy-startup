@@ -14,10 +14,12 @@ async def on_ready():
     channel = client.get_channel(int(CHANNEL_ID))
     await channel.send("起動")
 
-@tasks.loop(seconds = 10)
+@tasks.loop(seconds=10)
 async def loop():
     channel = client.get_channel(int(CHANNEL_ID))
     await channel.send("ok")
+
+loop.start()
 
 """
 @tasks.loop(seconds = 86400)
@@ -35,5 +37,4 @@ async def on_message(message):
     if message.content == "/ping":
         await message.channel.send("pong")
 
-loop.start()
 client.run(TOKEN)
