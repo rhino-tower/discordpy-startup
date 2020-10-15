@@ -13,7 +13,7 @@ client = discord.Client()
 async def loop():
     channel = client.get_channel(int(CHANNEL_ID))
     await channel.send("ok")
-
+"""
 @tasks.loop(seconds = 86400)
 async def loop():
     dt = datetime.datetime.now()
@@ -21,7 +21,7 @@ async def loop():
     if dt.strftime('%A') == 'Monday':
         channel = client.get_channel(int(CHANNEL_ID))
         await channel.send('今日からソフトウェア技術の課題が出ます！お忘れなく!')
-
+"""
 @client.event
 async def on_message(message):
     if message.author.bot:
