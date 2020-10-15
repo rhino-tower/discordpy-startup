@@ -6,7 +6,7 @@ import datetime
 import locale
 
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
-CHANNEL_ID = os.environ['DISCORD_CHANNEL_ID']
+#CHANNEL_ID = os.environ['DISCORD_CHANNEL_ID']
 bot = commands.Bot(command_prefix = '/')
 client = discord.Client()
 
@@ -14,7 +14,7 @@ client = discord.Client()
 async def on_message(message):
     if message.author.bot:
         return
-    if message.content == 'これからよろしく！':
-        await message.channel.send("了解しました‼")
+    if message.content == '/ping':
+        await message.channel.send("pong")
 
 bot.run(TOKEN)
