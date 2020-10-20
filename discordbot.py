@@ -33,7 +33,7 @@ def time_limit_msg(date_dict):
     seconds = left_time.seconds % 60
     minute = int(left_time.seconds / 60) % 60
     hour = int(int(left_time.seconds / 60) / 60)
-    msg = "現在の時刻 : " + str(dt_now)
+    msg = "\n現在の時刻 : " + str(dt_now)
     msg += "\n========提出まで残り時間========\n"
     msg += str(left_time.days) + "日" + str(hour) + "時間" + str(minute) + "分" + str(seconds) + "秒\n"
     if left_time.days == 0:
