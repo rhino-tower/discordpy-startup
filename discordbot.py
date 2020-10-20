@@ -84,7 +84,7 @@ async def on_message(message):
     channel = client.get_channel(int(DATABASE_CHANNEEL_ID))
     if message.author.bot:
         return
-    await message.channel.send("ok")
+    await client.send_message("ok")
     if message.content == 'help':
         await message.channel.send(usage)
     elif message.content.startswith('-'):
