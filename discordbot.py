@@ -14,7 +14,7 @@ async def on_message(message):
     if message.author.bot:
         return
     if message.content == 'hello':
-        print("了解しました‼")
+        await message.channel.send("了解しました‼")
 
 @tasks.loop(seconds = 86400)
 async def loop():
