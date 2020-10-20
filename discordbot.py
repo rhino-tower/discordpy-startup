@@ -78,10 +78,13 @@ async def time_limit(register_channel):
         msg += time_limit_msg(date_dict)
     await channel.send(msg)
 
-@client.event
-async def on_ready():
+async def update_task():
     channel = client.get_channel(int(DATABASE_CHANNEL_ID))
     await time_limit(channel)
+
+@client.event
+async def on_ready():
+    await update_task()
 
 @client.event
 async def on_message(message):
