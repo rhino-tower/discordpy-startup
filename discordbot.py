@@ -18,15 +18,7 @@ usage = '● 使い方 : 『-(課題名),(提出日)』と入力すると課題�
 async def on_message(message):
     if message.author.bot:
         return
-    if message.content == 'hello':
+    if message.content == 'help':
         await message.channel.send(usage)
-
-@tasks.loop(seconds = 86400)
-async def loop():
-    dt = datetime.datetime.now()
-
-    if dt.strftime('%A') == 'Monday':
-        channel = client.get_channel(int(CHANNEL_ID))
-        await channel.send('今日からソフトウェア技術とサイバー技術の課題が出ます！\nお忘れなく!')
 
 client.run(TOKEN)
