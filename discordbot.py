@@ -16,12 +16,12 @@ usage = '● 使い方 : 『-(課題名),(提出日)』と入力すると課題�
 
 @client.event
 async def on_message(message):
-    channel = client.get_channel(int(CHANNEEL_ID))
     if message.author.bot:
         return
     if message.content == 'help':
         await message.channel.send(usage)
     elif message.content.startswith('-'):
+        channel = client.get_channel(int(CHANNEEL_ID))
         await channel.send(message.content)
         #await time_limit(channel)
         
