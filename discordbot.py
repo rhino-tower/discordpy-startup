@@ -25,7 +25,7 @@ def time_limit_msg(date_dict):
     M = int(date_dict['minute'])
 
     dt_deadline = datetime(year=y, month=m, day=d, hour=h, minute=M)
-    dt_now = datetime.now(tmiezone('Asia/Tokyo'))
+    dt_now = datetime.now(timezone('Asia/Tokyo'))
     left_time = dt_deadline - dt_now
     
     if dt_deadline < dt_now:
