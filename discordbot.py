@@ -83,7 +83,6 @@ async def time_limit(register_channel):
 async def on_message(message):
     if message.author.bot:
         return
-    await client.send_message("ok")
     if message.content == 'help':
         await message.channel.send(usage)
     elif message.content.startswith('-'):
