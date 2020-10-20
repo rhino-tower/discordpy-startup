@@ -84,9 +84,9 @@ async def on_message(message):
     channel = client.get_channel(int(DATABASE_CHANNEEL_ID))
     if message.author.bot:
         return
-    await message.channel.send("as")
+    await message.channel.send("ok")
     if message.content == 'help':
-        await message.channel.send('as')
+        await message.channel.send(usage)
     elif message.content.startswith('-'):
         await channel.send(message.content)
         await time_limit(channel)
