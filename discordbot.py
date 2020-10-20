@@ -3,7 +3,7 @@ import os
 from discord.ext import tasks
 from discord.ext import commands
 from datetime import datetime
-from pytz import timezone
+#from pytz import timezone
 import locale
 
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
@@ -25,7 +25,7 @@ def time_limit_msg(date_dict):
     M = int(date_dict['minute'])
 
     dt_deadline = datetime(year=y, month=m, day=d, hour=h, minute=M)
-    dt_now = datetime.now(timezone('Asia/Tokyo'))
+    dt_now = datetime.now()
     left_time = dt_deadline - dt_now
     
     if dt_deadline < dt_now:
