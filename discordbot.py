@@ -79,6 +79,11 @@ async def time_limit(register_channel):
     await channel.send(msg)
 
 @client.event
+async def on_ready():
+    channel = client.get_channel(int(DATABASE_CHANNEL_ID))
+    await time_limit(channel)
+
+@client.event
 async def on_message(message):
     if message.author.bot:
         return
