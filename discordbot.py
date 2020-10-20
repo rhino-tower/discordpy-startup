@@ -6,14 +6,15 @@ from datetime import datetime
 import locale
 
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
-CHANNEL_ID1 =  os.environ['CHANNEL_ID1']
-CHANNEL_ID2 =  os.environ['CHANNEL_ID2']
+ANNOUNCE_CHANNEL_ID =  os.environ['ANNOUNCE_CHANNEL_ID']
+DATABASE_CHANNEL_ID =  os.environ['DATABASE_CHANNEL_ID']
 client = discord.Client()
 
 usage = '● 使い方 : 『-(課題名),(提出日)』と入力すると課題の締め切りが登録できます\n\n' \
     + '● (提出日) の書き方 : 年/月/日/時/分\n\n' \
     + '● (例) 2020年9月20日10時30分の場合\n　-(課題名),2020/9/20/10/30\n\n' \
     + '☆ 使い方を忘れたら『help』で、この説明は何度も見れます\n\n' \
+    + '!注意! task_databaseチャンネルに課題内容を保管するので、書き込みは注意しましょう!'
 
 def time_limit_msg(date_dict):
     y = int(date_dict['year'])
@@ -40,7 +41,7 @@ def time_limit_msg(date_dict):
     return msg
 
 async def time_limit(register_channel):
-    channel = client.get_channel(int(CHANNEL_ID1))
+    channel = client.get_channel(int(ANNOUNCE_CHANNEL_ID))
     text_id_list = await register_channel.history().flatten()
     msg = ''
     for text_id in text_id_list:
@@ -80,7 +81,7 @@ async def time_limit(register_channel):
 
 @client.event
 async def on_message(message):
-    channel = client.get_channel(int(CHANNEEL_ID2))
+    channel = client.get_channel(int(DATABASE_CHANNEEL_ID))
     if message.author.bot:
         return
     if message.content == 'help':
