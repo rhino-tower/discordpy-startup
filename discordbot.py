@@ -92,6 +92,8 @@ async def on_message(message):
         return
     if message.content == 'help':
         await message.channel.send(usage)
+    elif message.content == 'update':
+        await update_task()
     elif message.content.startswith('-'):
         channel = client.get_channel(int(DATABASE_CHANNEL_ID))
         await channel.send(message.content)
