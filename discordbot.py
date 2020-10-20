@@ -34,10 +34,10 @@ def time_limit_msg(date_dict):
     minute = int(left_time.seconds / 60) % 60
     hour = int(int(left_time.seconds / 60) / 60)
     
-    msg = "========提出まで残り時間========\n"
+    msg = "\n========提出まで残り時間========\n"
     msg += str(left_time.days) + "日" + str(hour) + "時間" + str(minute) + "分" + str(seconds) + "秒\n"
     if left_time.days == 0:
-        msg += '残り一日を切っています!!'
+        msg += "残り一日を切っています!!```\n"
     return msg
 
 async def time_limit(register_channel):
@@ -74,7 +74,7 @@ async def time_limit(register_channel):
         while i != len(text):
             date_dict['minute'] += text[i]
             i += 1
-        msg += time_limit_msg(date_dict) + "\n ```"
+        msg += time_limit_msg(date_dict)
     await channel.send(msg)
 
 @client.event
