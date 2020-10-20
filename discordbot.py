@@ -10,10 +10,11 @@ ANNOUNCE_CHANNEL_ID =  os.environ['ANNOUNCE_CHANNEL_ID']
 DATABASE_CHANNEL_ID =  os.environ['DATABASE_CHANNEL_ID']
 client = discord.Client()
 
-usage = '◎ 使い方 : ①『-(課題名),(提出日)』と入力すると課題の締め切りが登録できます\n\n' \
-    + '● (提出日) の書き方 : 年/月/日/時/分\n\n' \
-    + '● (例) 2020年9月20日10時30分の場合\n　-(課題名),2020/9/20/10/30\n\n' \
-    + '②『update』を入力すると、更新されます\n\n' \
+usage = '◎ 使い方\n' \
+    + ' ①『-(課題名),(提出日)』と入力すると課題の締め切りが登録できます\n\n' \
+    + '     ● (提出日) の書き方 : 年/月/日/時/分\n\n' \
+    + '     ● (例) 2020年9月20日10時30分の場合\n　-(課題名),2020/9/20/10/30\n\n' \
+    + ' ②『update』を入力すると、更新されます\n\n' \
     + '☆ 使い方を忘れたら『help』で、この説明は何度も見れます\n\n' \
     + 'bangbang:注意:bangbang: : task_databaseチャンネルに課題内容を保管するので、書き込みは注意しましょう!'
 
