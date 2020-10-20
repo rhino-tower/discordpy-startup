@@ -21,7 +21,7 @@ async def on_message(message):
     if message.content == 'help':
         await message.channel.send(usage)
     elif message.content.startswith('-'):
-        channel = client.get_channel(int(CHANNEEL_ID))
+        channel = client.get_channel(int(CHANNEL_ID))
         await channel.send(message.content)
         #await time_limit(channel)
         
