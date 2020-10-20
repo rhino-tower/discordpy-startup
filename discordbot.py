@@ -15,7 +15,7 @@ usage = '◎ 使い方 : ①『-(課題名),(提出日)』と入力すると課�
     + '● (例) 2020年9月20日10時30分の場合\n　-(課題名),2020/9/20/10/30\n\n' \
     + '②『update』を入力すると、更新されます\n\n' \
     + '☆ 使い方を忘れたら『help』で、この説明は何度も見れます\n\n' \
-    + '注意:bangbang: task_databaseチャンネルに課題内容を保管するので、書き込みは注意しましょう!'
+    + '注意:bangbang: :task_databaseチャンネルに課題内容を保管するので、書き込みは注意しましょう!'
 
 def time_limit_msg(date_dict):
     y = int(date_dict['year'])
@@ -39,7 +39,7 @@ def time_limit_msg(date_dict):
     msg += str(left_time.days) + "日" + str(hour) + "時間" + str(minute) + "分" + str(seconds) + "秒\n"
     if left_time.days == 0:
         msg += ":bangbang:残り一日を切っています:bangbang:"
-    msg += "```"
+    msg += "``"
     return msg
 
 async def time_limit(register_channel):
@@ -49,7 +49,7 @@ async def time_limit(register_channel):
     for text_id in text_id_list:
         text = text_id.content
         i = 1
-        msg += "```課題名 : "
+        msg += "``課題名 : "
         while text[i] != ',':
             msg += text[i]
             i += 1
