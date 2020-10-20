@@ -43,7 +43,7 @@ def time_limit_msg(date_dict):
 async def time_limit(register_channel):
     channel = client.get_channel(int(ANNOUNCE_CHANNEL_ID))
     text_id_list = await register_channel.history().flatten()
-    msg = '```'
+    msg = "\```"
     for text_id in text_id_list:
         text = text_id.content
         i = 1
@@ -76,7 +76,7 @@ async def time_limit(register_channel):
         while i != len(text):
             date_dict['minute'] += text[i]
             i += 1
-        msg += time_limit_msg(date_dict) + "\n```"
+        msg += time_limit_msg(date_dict) + "\n \```"
     await channel.send(msg)
 
 @client.event
