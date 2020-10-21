@@ -40,7 +40,7 @@ def time_limit_msg(date_dict):
     msg += str(left_time.days) + "日" + str(hour) + "時間" + str(minute) + "分" + str(seconds) + "秒\n"
     if left_time.days == 0:
         msg += "●残り一日を切っています!!!●"
-    msg += "``"
+    msg += "```"
     return msg
 
 async def time_limit(register_channel):
@@ -50,7 +50,7 @@ async def time_limit(register_channel):
     for text_id in text_id_list:
         text = text_id.content
         i = 1
-        msg += "``課題名 : "
+        msg += "```課題名 : "
         while text[i] != ',':
             msg += text[i]
             i += 1
