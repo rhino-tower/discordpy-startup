@@ -17,6 +17,8 @@ usage = '◎ 使い方\n' \
     + ' ②『update』を入力すると、更新されます\n\n' \
     + '☆ 使い方を忘れたら『help』で、この説明は何度も見れます\n\n' \
     + ':bangbang:注意:bangbang: : task_databaseチャンネルに課題内容を保管するので、書き込みは注意しましょう!'
+#提出まで一日を切った課題があるときは全員にmentionを送るカウント
+urgent_task_cnt = 0
 
 def time_limit_msg(date_dict):
     y = int(date_dict['year'])
@@ -39,6 +41,7 @@ def time_limit_msg(date_dict):
     msg += "\n========提出まで残り時間========\n"
     msg += str(left_time.days) + "日" + str(hour) + "時間" + str(minute) + "分" + str(seconds) + "秒\n"
     if left_time.days == 0:
+        urgent_task_cnt = 1
         msg += "●残り一日を切っています!!!●"
     msg += "```"
     return msg
@@ -82,6 +85,8 @@ async def time_limit(register_channel):
             i += 1
         msg += time_limit_msg(date_dict)
     await channel.send(msg)
+    if urgent_task_cnt == 1:
+        await channel.send("@everyone 1日を切っている課題があるので要注意:bangbang:")
 
 async def update_task():
     channel = client.get_channel(int(DATABASE_CHANNEL_ID))
