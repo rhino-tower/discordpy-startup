@@ -84,9 +84,9 @@ async def time_limit(register_channel):
             date_dict['minute'] += text[i]
             i += 1
         msg += time_limit_msg(date_dict)
-    await channel.send(msg)
     if urgent_task_cnt == 1:
         await channel.send("@everyone 1日を切っている課題があるので要注意:bangbang:")
+    await channel.send(msg)
 
 async def update_task():
     channel = client.get_channel(int(DATABASE_CHANNEL_ID))
