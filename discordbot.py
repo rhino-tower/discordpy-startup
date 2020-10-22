@@ -51,7 +51,7 @@ async def time_limit(register_channel):
     text_id_list = await register_channel.history().flatten()
     
     #課題登録もしくは更新する度、メッセージをすべて消す
-    await channel.purge(limit = None)
+    #await channel.purge(limit = None)
     msg = ""
     for text_id in text_id_list:
         text = text_id.content
