@@ -56,6 +56,7 @@ def time_limit_msg(dt_deadline, dt_now):
     minute = int(left_time.seconds / 60) % 60
     hour = int(int(left_time.seconds / 60) / 60)
     msg = "\n現在の時刻 : " + str(dt_now)
+    msg += "\n提出時刻   : " + str(dt_deadline)
     msg += "\n========提出まで残り時間========\n"
     msg += str(left_time.days) + "日" + str(hour) + "時間" + str(minute) + "分" + str(seconds) + "秒\n"
     if left_time.days == 0:
