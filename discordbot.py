@@ -94,9 +94,9 @@ async def time_limit(database_channel):
             await text_id.delete()
         else:
             msg += time_limit_msg(dt_deadline, dt_now)
+            if (dt_deadline - dt_now).days == 0:
+                await channel.send("@everyone 1日を切っている課題があるので要注意:bangbang:")
             await channel.send(msg)
-    if (dt_deadline - dt_now).days == 0:
-        await channel.send("@everyone 1日を切っている課題があるので要注意:bangbang:")
 
 async def update_task():
     channel = client.get_channel(int(DATABASE_CHANNEL_ID))
