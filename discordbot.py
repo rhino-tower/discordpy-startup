@@ -51,7 +51,7 @@ async def time_limit(register_channel):
     text_id_list = await register_channel.history().flatten()
     
     #課題登録もしくは更新する度、メッセージをすべて消す
-    #await channel.purge(limit = None)
+    await channel.purge(limit = None)
     msg = ""
     for text_id in text_id_list:
         text = text_id.content
@@ -84,8 +84,8 @@ async def time_limit(register_channel):
             date_dict['minute'] += text[i]
             i += 1
         msg += time_limit_msg(date_dict)
-    if urgent_task_cnt == 1:
-        await channel.send("@everyone 1日を切っている課題があるので要注意:bangbang:")
+    #if urgent_task_cnt == 1:
+    #    await channel.send("@everyone 1日を切っている課題があるので要注意:bangbang:")
     await channel.send(msg)
 
 async def update_task():
