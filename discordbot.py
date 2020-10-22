@@ -70,7 +70,9 @@ async def time_limit(database_channel):
     
     #課題登録もしくは更新する度、メッセージをすべて消してからアナウンスする
     await channel.purge(limit = None)
-
+    
+    #提出まで一日を切っている課題があるかをカウントする変数(あったら値は1)
+    urgent_task_cnt = 0
     msg = ""
     #辞書型date_dictに提出期限をstr型に変換して各要素に保持させる
     for text_id in text_id_list:
@@ -96,8 +98,10 @@ async def time_limit(database_channel):
         else:
             msg += time_limit_msg(dt_deadline, dt_now)
             if (dt_deadline - dt_now).days == 0:
-                await channel.send("@everyone 1日を切っている課題があるので要注意:bangbang:")
+                urgent_task_cnt = 1
             await channel.send(msg)
+    if urgent_task_cnt == 1:
+        await channel.send("@everyone 1日を切っている課題があるので要注意:bangbang:")
 
 async def update_task():
     channel = client.get_channel(int(DATABASE_CHANNEL_ID))
